@@ -12,6 +12,7 @@ schema_list:
   # 除了 t9，它依赖于 rime_ice，用九宫格别删 rime_ice.schema.yaml
   - schema: rime_ice               # 雾凇拼音（全拼）
   - schema: t9                     # 九宫格（仓输入法）
+  - schema: combo_pinyin           # 宫保拼音
   - schema: double_pinyin          # 自然码双拼
   - schema: double_pinyin_abc      # 智能 ABC 双拼
   - schema: double_pinyin_mspy     # 微软双拼
@@ -22,7 +23,7 @@ schema_list:
 
 # 菜单
 menu:
-  page_size: 5  # 候选词个数
+  page_size: 8  # 候选词个数
   # alternative_select_labels: [ ①, ②, ③, ④, ⑤, ⑥, ⑦, ⑧, ⑨, ⑩ ]  # 修改候选项标签
   # alternative_select_keys: ASDFGHJKL  # 如编码字符占用数字键，则需另设选字键
 
@@ -170,6 +171,8 @@ key_binder:
   # Lua 配置: 以词定字（上屏当前词句的第一个或最后一个字），和中括号翻页有冲突
   select_first_character: "bracketleft"  # 左中括号 [
   select_last_character: "bracketright"  # 右中括号 ]
+  
+  
 
   bindings:
     # Tab / Shift+Tab 切换光标至下/上一个拼音
@@ -188,8 +191,8 @@ key_binder:
     - { when: has_menu, accept: equal, send: Page_Down }
 
     # 翻页 , .
-    # - { when: paging, accept: comma, send: Page_Up }
-    # - { when: has_menu, accept: period, send: Page_Down }
+    - { when: paging, accept: comma, send: Page_Up }
+    - { when: has_menu, accept: period, send: Page_Down }
 
     # 翻页 [ ]
     # - { when: paging, accept: bracketleft, send: Page_Up }
